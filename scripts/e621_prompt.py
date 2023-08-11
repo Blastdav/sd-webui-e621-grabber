@@ -6,6 +6,10 @@ from modules.ui_components import FormRow, FormColumn, FormGroup, ToolButton
 
 import re
 import requests
+import json
+from urllib.request import urlopen
+from hashlib import md5
+from base64 import b64encode
 
 NAME = "e621 Grabber"
 
@@ -26,7 +30,7 @@ class Script(scripts.Script):
     taglist = []
     headers = {"User-Agent": "e6grabber/0.1 (by /u/yourusernamehere)"}
 
-    url = "https://e621.net/posts.json?tags=" + tags + "&limit=1"
+    url = "https://e621.net/posts.json?tags=" + tags + "&limit=2"
     r = requests.get(url, headers=headers)
     json = r.json()
     for post in json["posts"]:
