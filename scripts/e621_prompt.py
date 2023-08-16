@@ -83,12 +83,18 @@ class Script(scripts.Script):
       print("Not randomizing")
       prompt_add = self.grab(source)
       for i, prompt in enumerate(p.all_prompts):
-        positivePrompt = prompt_add + ", " + prompt
+        if "<e6grabber>" in prompt:
+          positivePrompt = prompt.replace("<e6grabber>", prompt_add)
+        else:
+          positivePrompt = prompt_add + ", " + prompt
         p.all_prompts[i] = positivePrompt
     else:
       print("One moment, grabbing prompts...")
       for i, prompt in enumerate(p.all_prompts):
-        positivePrompt = self.grab(source) + ", " +  prompt
+        if "<e6grabber>" in prompt:
+          positivePrompt = prompt.replace("<e6grabber>", self.grab(source))
+        else:
+          positivePrompt = self.grab(source) + ", " +  prompt
         p.all_prompts[i] = positivePrompt
     pass
 

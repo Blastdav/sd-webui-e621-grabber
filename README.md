@@ -48,6 +48,8 @@ The extension itself works as follows:
     It is important to note that this works the same way as the E621 search box. An example query would be "female solo rating:safe"
 
     If there are no results found (currently) an error will flag up in the console and the generation will continue without adding anything to the prompt.
+# Other functions
+    If the prompt <e6grabber> is used within the prompt field, the fetched tags are inserted there (with no leading or follownig commas); otherwise, they are insterted at the very start of the prompt (with a following comma)
 
 ## Something wrong?
 
@@ -61,6 +63,7 @@ Please adhere to the Github TOS and **do not post** any NSFW imagery or tags in 
 - Updating readme
 - Updated text in the settings page
 - Changed text on labels in extension
+- Added the ability to insert the tags into a specific place in the prompt via <e6grabber>
 
 ### 11/08/2023
 - First release
