@@ -24,13 +24,16 @@ class Script(scripts.Script):
     return scripts.AlwaysVisible
 
 
-  def grab(self,tags):
+  def grab(self,tags,seed=""):
     tags += " " + opts.tag_additions
     tags = tags.replace("<", "%3C").replace(">", "%3E").replace(":", "%3A").replace(" ", "+").replace("<", "%3C")
     taglist = []
     headers = {"User-Agent": "e6grabber/0.1 (by /u/yourusernamehere)"}
 
-    url = "https://e621.net/posts.json?tags=" + tags + "&limit=2"
+    if seed == "":
+      url = "https://e621.net/posts.json?tags=" + tags + "&limit=1"
+    else:
+      url = "https://e621.net/posts.json?tags=randseed:" + seed + "+" + tags + "&limit=1"
     r = requests.get(url, headers=headers)
     json = r.json()
     for post in json["posts"]:
@@ -76,12 +79,18 @@ class Script(scripts.Script):
 
   def process(self, p, source, is_this_thing_enabled, randomize, *script_args, **kwargs):
 
+    fix_seed = False
+
     if not is_this_thing_enabled:
+      #print(p.seed)
       return
     
     if not randomize:
       print("Not randomizing")
-      prompt_add = self.grab(source)
+      if fix_seed:
+        prompt_add = self.grab(source, str(p.seed).replace(".0",""))
+      else:
+        prompt_add = self.grab(source)
       for i, prompt in enumerate(p.all_prompts):
         if "<e6grabber>" in prompt:
           positivePrompt = prompt.replace("<e6grabber>", prompt_add)
@@ -117,6 +126,8 @@ class Script(scripts.Script):
             is_this_thing_enabled = gr.Checkbox(value=False, label="Enable", info="Enable E621 Grabber")
           with FormColumn(elem_id="Randomize"):
             randomize = gr.Checkbox(value=False, label="Enabled", info="Random prompt every time")
+          # with FormColumn(elem_id="fix_seed"):
+          #   fix_seed = gr.Checkbox(value=False, label="Enabled", info="Link random prompt to seed")
 
         source = gr.Textbox(label="Search query", value="", placeholder="Search")
 
