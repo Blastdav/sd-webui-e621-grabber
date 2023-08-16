@@ -108,11 +108,11 @@ class Script(scripts.Script):
         with FormRow():
            
           with FormColumn(min_width=160):
-            is_this_thing_enabled = gr.Checkbox(value=False, label="Enable", info="Enable Or Disable E621 Grabber")
+            is_this_thing_enabled = gr.Checkbox(value=False, label="Enable", info="Enable E621 Grabber")
           with FormColumn(elem_id="Randomize"):
             randomize = gr.Checkbox(value=False, label="Enabled", info="Random prompt every time")
 
-        source = gr.Textbox(label="Source", value="", placeholder="Search query")
+        source = gr.Textbox(label="Search query", value="", placeholder="Search")
 
         # with FormRow():
         #   with FormColumn(min_width=160):
@@ -136,7 +136,7 @@ def on_ui_settings():
   settings_options = [
     # ("e621_grabber_username", "", "e621 Username. Not required, but highly preferred"),
     # ("e621_grabber_api_key", "", "e621 API Key. Not required, but highly preferred"),
-    ("tag_additions","-text -human -skull -animated -scat -watersports -fat -comic -meme order:random score:>1000","Things to include with every search (Best to include order:random and possibly score:>1000)"),
+    ("tag_additions","-text -human -skull -animated order:random gentags:>30 -scat -watersports -meme -diaper -necrophilia -death -fat -comic -chubby -pregnant","Things to include with every search (Best to include order:random and possibly gentags:>30)"),
     ("regex_remove","(black_and_white|black|blue|brown|gold|gradient|green|grey|monotone|multicolored|amber|orange|pink|purple|red|spotted|striped|tan|two_tone|white|yellow|blonde)_(fur|body|hair|eyes|nose|scales|ears|glans|penis|perineum|balls|pawpads|anus|nipples|tongue|sclera|markings|spots|tail|pussy|nipples|penis|genita|skin|areola|inner_pussy|claws|lips|hair|eyebrows|pupils|feathers|foreskin|wings|mouth|clitoris|flesh|clitoral_hood|sheath|beak)","Regex of tags to remove (regex)"),
     ("regex_weight","","Tags to increase the weight of (comma separated)"),
     ("regex_extra_weight","","Tags to add extra brackets around (comma separated)"),
