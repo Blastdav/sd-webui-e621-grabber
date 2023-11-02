@@ -153,8 +153,8 @@ def on_ui_settings():
   settings_options = [
     # ("e621_grabber_username", "", "e621 Username. Not required, but highly preferred"),
     # ("e621_grabber_api_key", "", "e621 API Key. Not required, but highly preferred"),
-    ("tag_additions","-text -human -skull -animated order:random gentags:>30 -scat -watersports -meme -diaper -necrophilia -death -fat -comic -chubby -pregnant","Things to include with every search (Best to include order:random and possibly gentags:>30)"),
-    ("regex_remove","(black_and_white|black|blue|brown|gold|gradient|green|grey|monotone|multicolored|amber|orange|pink|purple|red|spotted|striped|tan|two_tone|white|yellow|blonde)_(fur|body|hair|eyes|nose|scales|ears|glans|penis|perineum|balls|pawpads|anus|nipples|tongue|sclera|markings|spots|tail|pussy|nipples|penis|genita|skin|areola|inner_pussy|claws|lips|hair|eyebrows|pupils|feathers|foreskin|wings|mouth|clitoris|flesh|clitoral_hood|sheath|beak)","Regex of tags to remove (regex)"),
+    ("tag_additions","-human -skull -animated order:random gentags:>10 -scat -watersports -meme -diaper -necrophilia -death -fat -chubby -pregnant -baby -inflation -dying -decapitation","Things to include with every search (Best to include order:random and possibly gentags:>30)"),
+    ("regex_remove","((rainbow|black_and_white|black|blue|brown|gold|gradient|green|grey|monotone|multicolored|amber|orange|pink|purple|red|spotted|striped|tan|two_tone|white|yellow|blonde|dipstick)_(fur|body|hair|eyes|nose|scales|ears|glans|penis|perineum|balls|pawpads|anus|nipples|tongue|sclera|markings|spots|tail|pussy|nipples|penis|genita|skin|areola|inner_pussy|claws|lips|hair|eyebrows|pupils|feathers|foreskin|wings|mouth|clitoris|flesh|clitoral_hood|sheath|beak|stripes))|((large|huge|medium|small|big)_(breasts|penis|balls|hips|butt|areola|nipples))|circumcised|beak|high_heels","Regex of tags to remove (regex)"),
     ("regex_weight","","Tags to increase the weight of (comma separated)"),
     ("regex_extra_weight","","Tags to add extra brackets around (comma separated)"),
     ("weight","1.3","Amount of weight to add to tags")
